@@ -2,46 +2,66 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="duke"
-          class="com.artiushenko.springTutorial.Juggler">
-        <constructor-arg value="15"/>
-    </bean>
-    <bean id="sonnet29"
-          class="com.artiushenko.springTutorial.Sonnet29"/>
-    <bean id="poeticDuke"
-          class="com.artiushenko.springTutorial.PoeticJuggler">
-        <constructor-arg value="15"/>
-        <constructor-arg ref="sonnet29"/>
-    </bean>
-    <bean id="theStage"
-          factory-method="getInstance"
-          class="com.artiushenko.springTutorial.Stage">
-    </bean>
-    <bean id="kenny"
-    class="com.artiushenko.springTutorial.Instrumentalist"
-        p:song = "Jingle Bells"
-        p:instrument-ref="piano">
+    <!--<context:annotation-config />-->
+    <context:component-scan
+            base-package="com.artiushenko.springTutorial">
+    </context:component-scan>
+
+    <!--<bean id="duke"-->
+          <!--class="com.artiushenko.springTutorial.Juggler">-->
+        <!--<constructor-arg value="15"/>-->
+    <!--</bean>-->
+    <!--<bean id="sonnet29"-->
+          <!--class="com.artiushenko.springTutorial.Sonnet29"/>-->
+    <!--<bean id="poeticDuke"-->
+          <!--class="com.artiushenko.springTutorial.PoeticJuggler">-->
+        <!--<constructor-arg value="15"/>-->
+        <!--<constructor-arg ref="sonnet29"/>-->
+    <!--</bean>-->
+    <!--<bean id="theStage"-->
+          <!--factory-method="getInstance"-->
+          <!--class="com.artiushenko.springTutorial.Stage">-->
+    <!--</bean>-->
+    <!--<bean id="kenny"-->
+          <!--class="com.artiushenko.springTutorial.Instrumentalist"-->
+          <!--p:song="Jingle Bells">-->
+        <!--autowire="byType"-->
+        <!--p:instrument-ref="piano">-->
         <!--<property name="song" value ="Jingle Bells"/>-->
         <!--<property name="instrument">-->
-            <!--<bean class="com.artiushenko.springTutorial.Saxophone"/>-->
+        <!--<bean class="com.artiushenko.springTutorial.Saxophone"/>-->
         <!--</property>-->
-    </bean>
-    <bean id="saxophone"
-          class="com.artiushenko.springTutorial.Saxophone"/>
-    <bean id="piano"
-          class="com.artiushenko.springTutorial.Piano"/>
-    <bean id="hank"
-          class="com.artiushenko.springTutorial.OneManBand">
-        <property name="instruments">
-            <map>
-                <entry key="piano" value-ref="piano"/>
-                <entry key="saxophone" value-ref="saxophone"/>
-            </map>
-        </property>
-    </bean>
-
+    <!--</bean>-->
+    <!--<bean id="saxophone"-->
+          <!--class="com.artiushenko.springTutorial.Saxophone"-->
+          <!--primary="true"/>-->
+    <!--<bean id="piano"-->
+          <!--class="com.artiushenko.springTutorial.Piano"-->
+          <!--primary="true"/>-->
+    <!--<bean id="hank"-->
+          <!--class="com.artiushenko.springTutorial.OneManBand">-->
+        <!--<property name="instruments">-->
+            <!--<map>-->
+                <!--<entry key="piano" value-ref="piano"/>-->
+                <!--<entry key="saxophone" value-ref="saxophone"/>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="magicBox" class="com.artiushenko.springTutorial.MagicBoxImpl">-->
+        <!--<replaced-method name="getContents" replacer="tigerReplacer"/>-->
+    <!--</bean>-->
+    <!--<bean id="tigerReplacer" class="com.artiushenko.springTutorial.TigerReplacer"/>-->
+    <!--<bean id="harry"-->
+          <!--class="com.artiushenko.springTutorial.Magician">-->
+        <!--<property name="magicWords" value="Magic words"/>-->
+        <!--<property name="magicBox" ref="magicBox"/>-->
+    <!--</bean>-->
 
 
 </beans>
