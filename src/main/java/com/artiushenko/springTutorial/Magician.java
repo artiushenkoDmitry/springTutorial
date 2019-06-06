@@ -1,27 +1,15 @@
 package com.artiushenko.springTutorial;
 
-import com.artiushenko.springTutorial.interfaces.MagicBox;
-import com.artiushenko.springTutorial.interfaces.Performer;
+import com.artiushenko.springTutorial.interfaces.MindReader;
 
-public class Magician implements Performer {
-    public Magician() {
+public class Magician implements MindReader {
+    private String thoughts;
+
+    public void interceptThoughts(String thoughts) {
+        System.out.println("Intercepting volunteer’s thoughts");
+        this.thoughts = thoughts;
     }
-
-    @Override
-    public void perform() {
-        System.out.println(magicWords);
-        System.out.println("The magic box contains");
-        System.out.println(magicBox.getContents());
-    }
-
-    private MagicBox magicBox;
-
-    public void setMagicBox(MagicBox magicBox) {
-        this.magicBox = magicBox;
-    }
-    private String magicWords;
-
-    public void setMagicWords(String magicWords) {
-        this.magicWords = magicWords;
+    public String getThoughts() {
+        return thoughts;
     }
 }
