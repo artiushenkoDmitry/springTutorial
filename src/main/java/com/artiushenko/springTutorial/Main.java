@@ -1,5 +1,6 @@
 package com.artiushenko.springTutorial;
 
+import com.artiushenko.springTutorial.interfaces.Performer;
 import com.artiushenko.springTutorial.interfaces.Thincker;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -9,7 +10,7 @@ public class Main {
 //        ApplicationContext context = new FileSystemXmlApplicationContext("spring.xml");
         ApplicationContext context = new ClassPathXmlApplicationContext("com.ariushenko.springTutorial/spring.xml");
 
-        Thincker thincker = (Thincker) context.getBean("volunteer");
-        thincker.thinkOfSomething("нечто");
+        Performer performer = (Performer) context.getBean("kenny");
+        performer.perform();
         }
 }

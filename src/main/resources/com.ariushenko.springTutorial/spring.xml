@@ -6,15 +6,23 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
+    <bean id="kenny"
+          class="com.artiushenko.springTutorial.Juggler"/>
     <bean id="magician"
           class="com.artiushenko.springTutorial.Magician"/>
     <bean id="volunteer"
           class="com.artiushenko.springTutorial.Volunteer"/>
+    <bean id="audience"
+          class="com.artiushenko.springTutorial.Audience"/>
 
-    <aop:config>
-        <aop:aspect ref="magician">
-            <aop:pointcut id="thinking" expression="execution(* com.artiushenko.springTutorial.interfaces.Thincker.thinkOfSomething(String)) and args(thoughts)"/>
-            <aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thoughts" />
-        </aop:aspect>
-    </aop:config>
+    <aop:aspectj-autoproxy />
+    <!--<aop:config>-->
+        <!--<aop:aspect>-->
+            <!--<aop:declare-parents-->
+                    <!--types-matching="com.artiushenko.springTutorial.interfaces.Performer"-->
+                    <!--implement-interface="com.artiushenko.springTutorial.interfaces.Contestant"-->
+                    <!--default-impl="com.artiushenko.springTutorial.GraciousContestant"-->
+            <!--/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 </beans>
