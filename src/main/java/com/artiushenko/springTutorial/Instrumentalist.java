@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-
 //@Component("kenny")
 public class Instrumentalist implements Performer {
     public int i = 0;

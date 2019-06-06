@@ -19,18 +19,16 @@
             Компонент, на который ссылается ref, определяет методы, вызываемые советами в аспекте
             <aop:before/>, <aop:after-returning/>, <aop:after-throwing/> это все определения советов. -->
         <aop:aspect ref="audience"> <!--Ссылка на компонент audience -->
-            <!--<aop:pointcut id="performance ">-->
-            <aop:before pointcut=
-                                "execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"
+            <aop:pointcut id="performance" expression=
+                                                    "execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"/>
+                                                                                <!--Определение среза множества точек сопряжения-->
+            <aop:before pointcut-ref="performance"
                         method="takeSeats"/>            <!-- Перед выступлением -->
-            <aop:before pointcut=
-                                "execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"
+            <aop:before pointcut-ref="performance"
                         method="turnOffCellPhones" />            <!-- Перед выступлением -->
-            <aop:after-returning pointcut=
-                                         "execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"
+            <aop:after-returning pointcut-ref="performance"
                                  method="applaud" />            <!-- После выступления -->
-            <aop:after-throwing pointcut=
-                                        "execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"
+            <aop:after-throwing pointcut-ref="performance"
                                 method="demandRefund" />            <!-- После неудачного выступления -->
             <!--pointcut это срез множества точек сопряжения-->
         </aop:aspect>
