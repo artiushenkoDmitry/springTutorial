@@ -10,7 +10,7 @@ public class Main {
 //        ApplicationContext context = new FileSystemXmlApplicationContext("spring.xml");
         ApplicationContext context = new ClassPathXmlApplicationContext("com.ariushenko.springTutorial/spring.xml");
 
-        Performer performer = (Performer) context.getBean("kenny");
-        performer.perform();
+        Thincker thincker = (Thincker) context.getBean("volunteer");
+        thincker.thinkOfSomething("my thots");
         }
 }
