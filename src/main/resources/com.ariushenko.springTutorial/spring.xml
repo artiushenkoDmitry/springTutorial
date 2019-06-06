@@ -14,23 +14,10 @@
           class="com.artiushenko.springTutorial.Audience"/>
 
     <aop:config>
-        <!--Ниже представлен единственный аспект с помощью элемента <aop:aspect>.
-            Аттрибут ref ссылается на компонент POJO реализующий функциональность аспекта.
-            Компонент, на который ссылается ref, определяет методы, вызываемые советами в аспекте
-            <aop:before/>, <aop:after-returning/>, <aop:after-throwing/> это все определения советов. -->
-        <aop:aspect ref="audience"> <!--Ссылка на компонент audience -->
-            <aop:pointcut id="performance" expression=
-                                                    "execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"/>
-                                                                                <!--Определение среза множества точек сопряжения-->
-            <aop:before pointcut-ref="performance"
-                        method="takeSeats"/>            <!-- Перед выступлением -->
-            <aop:before pointcut-ref="performance"
-                        method="turnOffCellPhones" />            <!-- Перед выступлением -->
-            <aop:after-returning pointcut-ref="performance"
-                                 method="applaud" />            <!-- После выступления -->
-            <aop:after-throwing pointcut-ref="performance"
-                                method="demandRefund" />            <!-- После неудачного выступления -->
-            <!--pointcut это срез множества точек сопряжения-->
+        <aop:aspect ref="audience">
+            <aop:pointcut id="performance2" expression="execution(* com.artiushenko.springTutorial.interfaces.Performer.perform(..))"/>
+            <!--Совет выполняемый и до и после-->
+            <aop:around pointcut-ref="performance2" method="watchPerformance"/>
         </aop:aspect>
     </aop:config>
 </beans>
